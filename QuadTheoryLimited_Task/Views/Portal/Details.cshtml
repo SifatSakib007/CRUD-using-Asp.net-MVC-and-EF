@@ -1,0 +1,47 @@
+﻿@using QuadTheoryLimited_Task.Models
+@model Student
+
+<div class="container">
+    <div class="row pb-2">
+        <h2 class="text-primary">Student Details</h2>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td>@Model.Gender</td>
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td>@Model.DOB.ToString("yyyy-MM-dd")</td>
+        </tr>
+        <tr>
+            <th>Class</th>
+            <td>@Model.Class?.Name</td>
+        </tr>
+        <tr>
+            <th>Class Created Date</th>
+            <td>@Model.Class?.CreatedDate</td>
+        </tr>
+        <tr>
+            <th>Class Modification Date</th>
+            <td>@Model.Class?.ModificationDate</td>
+        </tr>
+        <tr>
+            <th>Student Information Created Date</th>
+            <td>@Model.CreatedDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+        </tr>
+        <tr>
+            <th>Student Information Modification Date</th>
+            <td>@Model.ModificationDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+        </tr>
+    </table>
+    <div class="row">
+        <div class="col-2">
+            <a asp-controller="Portal" asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@using QuadTheoryLimited_Task.Models
+@model Student
+
+<div class="border p-3 mt-4">
+    <div class="row pb-2">
+        <h2 class="text-primary">Delete Information</h2>
+    </div>
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group p-2">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" disabled class="form-control" />
+        
+    </div>
+    <div class="form-group p-2">
+        <label asp-for="Gender" class="control-label"></label>
+        <div>
+            <input type="radio" asp-for="Gender" value="Male" /> Male
+            <input type="radio" disabled asp-for="Gender" value="Female" /> Female
+        </div>
+       
+    </div>
+    <div class="form-group p-2">
+        <label asp-for="DOB" class="control-label"></label>
+        <input asp-for="DOB" disabled class="form-control" type="date" />
+        
+    </div>
+    <div class="form-group p-2">
+        <label asp-for="ClassId" class="control-label"></label>
+        <select asp-for="ClassId" disabled class="form-control">
+            @foreach (var item in ViewBag.Classes as List<QuadTheoryLimited_Task.Models.Class>)
+            {
+                <option value="@item.Id">@item.Id</option>
+            }
+        </select>
+        
+    </div>
+    <div class="form-group p-2">
+        <label asp-for="CreatedDate" class="control-label"></label>
+        <input asp-for="CreatedDate" disabled class="form-control" type="date" />
+
+    </div>
+    <div class="form-group p-2">
+        <label asp-for="ModificationDate" class="control-label"></label>
+        <input asp-for="ModificationDate" disabled class="form-control" type="date" />
+
+    </div>
+
+    <div class="row p-2">
+        <div class="col-2">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+        <div class="col-4">
+            <a asp-controller="Portal" asp-action="Index" class="btn btn-secondary">Back To List</a>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,46 @@
+﻿@using QuadTheoryLimited_Task.Models
+@model List<Student>
+
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"><a class="btn btn-primary" asp-controller="Portal" asp-action="Create">Add new Student Info</a></h2>
+        </div>
+    </div>
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">List of students</h2>
+        </div>
+    </div>
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Class</th>
+            <th scope="col">Dob</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var student in Model)
+        {
+            <tr>
+                <td>@student.Name</td>
+                <td>@student.Class?.Name</td>
+                <td>@student.DOB.ToString("yyyy-MM-dd")</td>
+                <td>@student.Gender</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@student.Id" class="btn btn-warning">Edit</a> | 
+                    <a asp-action="Details" asp-route-id="@student.Id" class="btn btn-info">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@student.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
